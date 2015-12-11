@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+ 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+ 
+    <title>AngularJS & Firebase Web App</title>
+ 
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--     <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet"> -->
+ 
+    <link href="justified-nav.css" rel="stylesheet">
+ 
+</head>
+ 
+<body ng-controller="HomeCtrl">
+ 
+    <div class="container">
+        <div class="" style="padding-bottom:0px;">
+            <h2>Biker Information</h2>
+        </div>
+        <form class="form-signin" role="form">
+
+        <div class="row">
+        <div class="col-xs-4">
+           <input type="text" class="form-control textboxmargin" data-ng-model="Biker_Information.firstname" placeholder="Firstname" required="" autofocus=""> 
+        </div>
+            
+            <div class="col-xs-4">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Biker_Information.middlename" placeholder="MiddleName" required="" autofocus="">
+            </div>
+
+            <div class="col-xs-4">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Biker_Information.lastname" placeholder="Lastname" required="" autofocus="">
+            </div>
+            <div class="col-xs-4">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Biker_Information.fathersname" placeholder="Father'sname" required="" autofocus="">
+            </div>
+        </div>
+        <button type="button" ng-click="adddata()" class="btn btn-lg btn-primary btn-block">Sign in</button>
+      </form>
+ 
+    </div>
+ 
+   
+ 
+</body></html>

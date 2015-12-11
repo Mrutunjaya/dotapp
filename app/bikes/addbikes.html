@@ -1,0 +1,97 @@
+<nav class="navbar navbar-inverse sidebar" role="navigation" style="height:100%;position:fixed">
+    <div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Brand</a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active"><a ng-click="bikelist()" style="cursor: pointer;">Bikes</a></li>
+				<li ><a class=""  ng-click="addbikers()" style="cursor: pointer;">Bikers</a></li>
+				<li ><a href="#">Assign Bikes<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
+<!-- 				<li ><a href="#"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+				<li ><a href="#"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li> -->
+
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="main">
+<!-- Content Here -->
+
+    <div class="" ng-controller="BikeCtrl">
+        <div class="" style="padding-bottom:0px;">
+            <h2>Add Bike </h2>
+
+            <hr/>
+        </div>
+        <form class="form-signin" role="form" name="userForm" ng-submit="submitForm(userForm.$valid)">
+
+        <div class="row">
+        <div class="col-xs-3">
+           <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.gpsid" placeholder="Gps Id" required="" autofocus="">
+        </div>
+
+        <div class="col-xs-3">
+           <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.bikename" placeholder="Bike Name" required="" autofocus="">
+        </div>
+            
+        <div class="col-xs-3">
+           <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.bikemake" placeholder="Bike Make" required="" autofocus="">
+        </div>
+            
+            <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.bikecode" placeholder="Bike Code Number" required="" autofocus="">
+            </div>
+
+            <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.biketype" placeholder=" Bike Type" required="" autofocus="">
+            </div>
+            <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.chassisnumber" placeholder="Chassis Number" required="" autofocus="">
+            </div>
+            <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.batterynumber" placeholder="Battery Number" required="" autofocus="">
+            </div>
+
+            <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.batteryexpiry" placeholder="Battery Expiry" required="" autofocus="">
+            </div>  
+
+            <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.bikeservice" placeholder="Bike Service" required="" autofocus="">
+            </div>
+            <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.bikegivenumber" placeholder="Bike Give Number" required="" autofocus="">
+            </div>
+            <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.idealconditioncoveredkm" placeholder="Ideal Condition Covered Km" autofocus="">
+            </div>
+            <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.actualcoverdkm" placeholder="Actual Covered Km" autofocus="">
+            </div>
+            <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.bikeprice" placeholder="Bike Price" required="" autofocus="">
+            </div>
+            <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Bike_Information.bikeshift" placeholder="Bike Shift" required="" autofocus="">
+            </div>
+            <div class="col-xs-3" style="margin-top:10px">
+            <span style="float:left;font-size:16px">IsActive</span>
+            <div style="margin-left:70px;"> <input type="checkbox" class="" data-ng-model="Bike_Information.isactive"></div>
+            </div>               
+            <div class="col-xs-12"> 
+            <button style="width:10%" type="submit" ng-click="addbikes()" class="btn btn-lg btn-primary btn-block">Add Bike</button></div>
+        </div>
+       
+      </form>
+ 
+    </div>
+</div>
