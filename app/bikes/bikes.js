@@ -2,12 +2,12 @@
 
 angular.module('myApp.bike', ['ngRoute','firebase'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/bike', {
-    templateUrl: 'bikes/bikelist.html',
-    controller: 'BikeCtrl'
-  });
-}])
+// .config(['$routeProvider', function($routeProvider) {
+//   $routeProvider.when('/bike', {
+//     templateUrl: 'bikes/bikelist.html',
+//     controller: 'BikeCtrl'
+//   });
+// }])
 
 .controller('BikeCtrl', ['$scope','$firebase','$firebaseSimpleLogin','$location',function($scope,$firebase,$firebaseSimpleLogin,$location, $routeParams) {
 //.controller('HomeCtrl', function ($scope ,$firebaseSimpleLogin, $location, $routeParams, attendeeFactory, $window) {

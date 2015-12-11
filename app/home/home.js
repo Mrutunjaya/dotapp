@@ -2,12 +2,12 @@
 
 angular.module('myApp.home', ['ngRoute','firebase'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/home', {
-    templateUrl: 'home/home.html',
-    controller: 'HomeCtrl'
-  });
-}])
+// .config(['$routeProvider', function($routeProvider) {
+//   $routeProvider.when('/home', {
+//     templateUrl: 'home/home.html',
+//     controller: 'HomeCtrl'
+//   });
+// }])
 .controller('HomeCtrl', ['$scope','$firebase','$firebaseSimpleLogin','$location',function($scope,$firebase,$firebaseSimpleLogin,$location, $routeParams) {
 //.controller('HomeCtrl', ['$scope','$location','CommonProp','$firebaseAuth',function($scope,$location,CommonProp,$firebaseAuth) {
  var firebaseObj = new Firebase("https://ariska.firebaseio.com");
@@ -39,7 +39,7 @@ if (!$scope.regForm.$invalid) {
                 //Success callback
 
                 console.log('Authentication successful');
-                $location.path('/bike');
+                $location.path('/bikelist');
             }, function(error) {
                 //Failure callback
                 if(username =='undefined')

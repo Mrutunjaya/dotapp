@@ -2,12 +2,12 @@
 
 angular.module('myApp.register', ['ngRoute','firebase'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/register', {
-    templateUrl: 'register/register.html',
-    controller: 'RegisterCtrl'
-  });
-}])
+// .config(['$routeProvider', function($routeProvider) {
+//   $routeProvider.when('/register', {
+//     templateUrl: 'register/register.html',
+//     controller: 'RegisterCtrl'
+//   });
+// }])
 
 .controller('RegisterCtrl', ['$scope','$firebase','$firebaseSimpleLogin','$location',function($scope,$firebase,$firebaseSimpleLogin,$location, $routeParams) {
 //.controller('HomeCtrl', function ($scope ,$firebaseSimpleLogin, $location, $routeParams, attendeeFactory, $window) {
