@@ -9,81 +9,18 @@ angular.module('myApp.bike', ['ngRoute','firebase'])
 //   });
 // }])
 
-.controller('BikeCtrl', ['$scope','$firebase','$firebaseSimpleLogin','$location',function($scope,$firebase,$firebaseSimpleLogin,$location, $routeParams) {
+//.controller('BikeCtrl', ['$scope','$firebase','$firebaseSimpleLogin','$location',function($scope,$firebase,$firebaseSimpleLogin,$location, $routeParams) {
 //.controller('HomeCtrl', function ($scope ,$firebaseSimpleLogin, $location, $routeParams, attendeeFactory, $window) {
-  
+ 
 
 
-  var firebaseObj = new Firebase("https://ariska.firebaseio.com");
-  var loginObj = $firebaseSimpleLogin(firebaseObj);
-  
-  $scope.user = {};
-  $scope.SignIn = function(){ 
-if (!$scope.regForm.$invalid) {
+.controller('BikeCtrl', ['$scope', '$firebase', 'CommonProp','$location', function($scope, $firebase, CommonProp,$location) {
+      $scope.username = CommonProp.getUser(); 
 
-     //e.preventDefault();
-     var username = $scope.user.email;
-     var password = $scope.user.password;
-     loginObj.$login('password', {
-                email: username,
-                password: password
-            })
-            .then(function(user) {
-                //Success callback
-
-                console.log('Authentication successful');
-                $location.path('/bike');
-            }, function(error) {
-                //Failure callback
-                if(username =='undefined')
-                {
-                  $scope.regError = false;
-
-                  }
-                  else
-                  {
-                    $scope.regError = true;
-                    $scope.regErrorMessage = error.message;
-                  }
-                console.log('Authentication failure');
-            });
-          }
-  }
-
-
-
-
-$scope.signUp = function() {
-
-
-var firebaseObj = new Firebase("https://dotapp.firebaseio.com");
-var auth = $firebaseAuth(firebaseObj);
-
-
-  
-    if (!$scope.regForm.$invalid) {
-        var email = $scope.user.email;
-        var password = $scope.user.password;
-        if (email && password) {
-            auth.$createUser(email, password)
-                .then(function() {
-                    // do things if success
-                    console.log('User creation success');
-                    $location.path('/home');
-                }, function(error) {
-                    // do things if failure
-                    console.log(error);
-                    $scope.regError = true;
-                    $scope.regErrorMessage = error.message;
-                });
-        }
-    }
-};
-
-
-
-
-  $scope.user = {};
+//       if(!$scope.username){
+//       $location.path('/home');
+// }
+          console.log($scope.username);
 
     var firebaseObj = new Firebase("https://dotapp.firebaseio.com/Bikes");
       
@@ -92,6 +29,23 @@ var auth = $firebaseAuth(firebaseObj);
 
   $scope.articles = sync.$asArray();
 //$scope.postToUpdate={};
+
+  $scope.viewSession = function(id) {
+    $location.path('/bikesedit');
+  };
+
+
+    $scope.editPost1 = function(id) {
+      //  console.log(id);
+      //  var firebaseObj = new Firebase("https://dotapp.firebaseio.com/Bikes/" + id);
+
+
+       // var syn = $firebase(firebaseObj);
+       // $scope.postToUpdate = syn.$asObject();
+        $location.path('/bikesedit/' + id);
+
+       // $('#editModal').modal('show');
+    }
 
 
   var isactive ='';
@@ -169,15 +123,15 @@ var auth = $firebaseAuth(firebaseObj);
 
 
 
-$scope.editPost = function(id) {    
-//$location.path('/bikeedit');
-    var firebaseObj = new Firebase("https://dotapp.firebaseio.com/Bikes/" + id); 
-    var syn = $firebase(firebaseObj);
-    $scope.postToUpdate = syn.$asObject();
-    $location.path('/bikeedit/');
+// $scope.editPost = function(id) {    
+// //$location.path('/bikeedit');
+//     var firebaseObj = new Firebase("https://dotapp.firebaseio.com/Bikes/" + id); 
+//     var syn = $firebase(firebaseObj);
+//     $scope.postToUpdate = syn.$asObject();
+//     $location.path('/bikeedit');
     
-   // $('#editModal').modal();      // triggers the modal pop up
-}
+//    // $('#editModal').modal();      // triggers the modal pop up
+// }
 
     $scope.update = function() {
         console.log($scope.postToUpdate.$id);

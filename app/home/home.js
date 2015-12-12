@@ -8,13 +8,18 @@ angular.module('myApp.home', ['ngRoute','firebase'])
 //     controller: 'HomeCtrl'
 //   });
 // }])
-.controller('HomeCtrl', ['$scope','$firebase','$firebaseSimpleLogin','$location',function($scope,$firebase,$firebaseSimpleLogin,$location, $routeParams) {
+.controller('HomeCtrl', ['$scope','$firebase','$firebaseSimpleLogin','$location','CommonProp',function($scope,$firebase,$firebaseSimpleLogin,$location,CommonProp, $routeParams) {
 //.controller('HomeCtrl', ['$scope','$location','CommonProp','$firebaseAuth',function($scope,$location,CommonProp,$firebaseAuth) {
  var firebaseObj = new Firebase("https://ariska.firebaseio.com");
     var loginObj = $firebaseSimpleLogin(firebaseObj);
   
   $scope.user = {};
   var login={};
+
+
+    $scope.bikelist = function() {
+    $location.path('/bikelist');
+  };
 
 $scope.test = function(){
   login.loading = true;
@@ -37,7 +42,7 @@ if (!$scope.regForm.$invalid) {
             })
             .then(function(user) {
                 //Success callback
-
+                CommonProp.setUser(user.email);
                 console.log('Authentication successful');
                 $location.path('/bikelist');
             }, function(error) {
@@ -57,8 +62,12 @@ if (!$scope.regForm.$invalid) {
           }
   }
 }])
-.service('CommonProp', function() {
+//.service('CommonProp', function() {
+  .service('CommonProp',['$location','$firebaseSimpleLogin',function($location,$firebaseSimpleLogin) {
     var user = '';
+
+      var firebaseObj = new Firebase("https://dotapp.firebaseio.com");
+  var loginObj = $firebaseSimpleLogin(firebaseObj);
  
     return {
         getUser: function() {
@@ -66,9 +75,16 @@ if (!$scope.regForm.$invalid) {
         },
         setUser: function(value) {
             user = value;
+        },
+          logoutUser:function(){
+            loginObj.$logout();
+            user='';
+            localStorage.removeItem('userEmail');
+            $location.path('/home');
         }
     };
-})
+//})
+  }])
 // .directive('laddaLoading', [
 //     function() {
 //         return {

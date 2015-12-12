@@ -6,6 +6,7 @@ angular.module('myApp', [
   'myApp.home',
   'myApp.register',
   'myApp.bike',
+  'myApp.bikeedit',
 
 ]).
 config(['$routeProvider', function($routeProvider) {
@@ -16,10 +17,10 @@ config(['$routeProvider', function($routeProvider) {
 	})
 
 
-		.when('/editb', {
-		templateUrl: 'home/editbikes.html',
-		controller: 'HomeCtrl'
-	})
+	// 	.when('/editb', {
+	// 	templateUrl: 'home/editbikes.html',
+	// 	controller: 'HomeCtrl'
+	// })
 		.when('/bike', {
 		templateUrl: 'home/bike.html',
 		controller: 'HomeCtrl'
@@ -33,17 +34,20 @@ config(['$routeProvider', function($routeProvider) {
 		templateUrl: 'bikers/addbikers.html',
 		controller: 'HomeCtrl'
 	})
-		.when('/bikeedit', {
-		templateUrl: 'bikes/bikeedit.html',
-		controller: 'BikeCtrl'
-	})
+	// 	.when('/bikeedit', {
+	// 	templateUrl: 'bikes/bikeedit.html',
+	// 	controller: 'BikeCtrl'
+	// })
 
 		.when('/register', {
     templateUrl: 'register/register.html',
     controller: 'RegisterCtrl'
 	})
 
-
+		.when('/bikesedit/:id', {
+		templateUrl: 'bikes/bikeedit.html',
+		controller: 'BikeiditCtrl'
+	})
 	// 	.when('/register', {
 	// 	templateUrl: 'home/register.html',
 	// 	controller: 'RegisterCtrl'
