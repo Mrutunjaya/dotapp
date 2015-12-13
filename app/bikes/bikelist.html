@@ -27,7 +27,7 @@
 		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
 			<ul class="nav navbar-nav">
     <li class="active"><a ng-click="bikelist()" style="cursor: pointer;">Bikes</a></li>
-				<li ><a class="" ng-click="addbikers()" style="cursor: pointer;">Bikers</a></li>
+				<li ><a class="" ng-click="bikerlist()" style="cursor: pointer;">Bikers</a></li>
 
 
 				<li ><a href="#">Assign Bikes<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
@@ -61,6 +61,7 @@
         <form class="form-signin" role="form">
 
         <div class="row">
+        <div class="col-xs-1"><h5>Bike Name</h5></div>
         <div class="col-xs-1"><h5>Bike Make</h5></div>
         <div class="col-xs-1"><h5>Bike Code</h5></div>
        <div class="col-xs-1"><h6>Bike Type</h5></div>
@@ -70,7 +71,7 @@
        <div class="col-xs-1"><h6>Bike Service</h6></div>
        <div class="col-xs-1"><h6>Bike Give Number</h6></div>
        <div class="col-xs-1"><h6>Ideal Km</div>
-       <div class="col-xs-1"><h6>Actual Km</div>
+
        <div class="col-xs-1"><h6>Bike Price</div>                            
        <div class="col-xs-1"><h6>Bike Shift</div>
 
@@ -78,6 +79,7 @@
 
         <div class="" ng-repeat="article in articles">
         <a href="" class="">
+        <div class="col-xs-1">{{article.bikename}}</div>
         <div class="col-xs-1">{{article.bikemake}}</div>
         <div class="col-xs-1">{{article.bikecode}}</div>
         <div class="col-xs-1">{{article.biketype}}</div>
@@ -87,7 +89,7 @@
         <div class="col-xs-1">{{article.bikeservice}}</div>
         <div class="col-xs-1">{{article.bikegivenumber}}</div>
         <div class="col-xs-1">{{article.idealconditioncoveredkm}}</div>
-        <div class="col-xs-1">{{article.actualcoverdkm}}</div>
+
         <div class="col-xs-1">{{article.bikeprice}}</div>
         <div class="col-xs-1">{{article.bikeshift}}</div>
    <!--     <div class="col-xs-1"> <button class="btn btn-xs btn-info" ng-click="editPost(article.$id)">EDIT</button></div> -->

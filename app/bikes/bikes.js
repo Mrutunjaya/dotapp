@@ -108,6 +108,11 @@ angular.module('myApp.bike', ['ngRoute','firebase'])
     $location.path('/register');
   };
 
+
+  $scope.bikerlist = function() {
+    $location.path('/bikerslist');
+  };
+
   $scope.addbikers = function() {
     $location.path('/addbikers');
   };

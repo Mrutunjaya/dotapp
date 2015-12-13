@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+
+    <title>AngularJS & Firebase Web App</title>
+
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="blog.css" rel="stylesheet">
+    
+  </head>
+
+
+<nav class="navbar navbar-inverse sidebar" role="navigation" style="height:100%;position:fixed">
+    <div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Brand</a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+    <li class="active"><a ng-click="bikelist()" style="cursor: pointer;">Bikes</a></li>
+				<li ><a class="" ng-click="bikerlist()" style="cursor: pointer;">Bikers</a></li>
+
+
+				<li ><a href="#">Assign Bikes<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
+
+        <li ng-click="logOut()"> <a href="#/"><span ng-hide="!username" ng-cloak>Logout</span> </a></li>
+
+     <!--    <li ><a href="#" >Logout<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li> -->
+<!-- 				<li ><a href="#"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+				<li ><a href="#"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li> -->
+
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="main">
+<!-- Content Here -->
+
+    <div class="" ng-controller="bikerCtrl">
+        <div class="" style="padding-bottom:0px;">
+        <div class="col-xs-12">
+            <div class="col-xs-4" style="font-size:28px">Employee List</div>
+            <span class="pull-right" style=float:left> 
+
+<!--            <span> <button style="" type="submit" ng-click="addbikers()" class="btn btn-lg btn-primary btn-block">Add Biker</button>
+           </span> -->
+
+           <span> <button style="" type="submit" ng-click="addbiker()" class="btn btn-lg btn-primary btn-block">Add Employee</button>
+           </span>
+            </div>
+            <hr/>
+
+
+
+        </div>
+        <form class="form-signin" role="form">
+
+        <div class="row">
+        <div class="col-xs-2"><h6>Employeecode</h6></div>
+        <div class="col-xs-2"><h5>Firstname</h5></div>
+       <div class="col-xs-1"><h6>Lastname</h5></div>
+       <div class="col-xs-2"><h6>Mobileno</h6></div>
+       <div class="col-xs-2"><h6>Email</h6></div>
+       <div class="col-xs-1"><h6>Bike Assigned</div>
+       <div class="col-xs-1"><h6>Shift</div>                            
+
+<br/><br/><br/><br/>
+
+        <div class="" ng-repeat="biker in bikerlist">
+        <a href="" class="">
+        <div class="col-xs-2">{{biker.Employeecode}}</div>
+        <div class="col-xs-2">{{biker.firstname}}</div>
+        <div class="col-xs-1">{{biker.lastname}}</div>
+        <div class="col-xs-2">{{biker.mobileno}}</div>
+       <!--  <div class="col-xs-1">{{article.batteryexpiry}}</div> -->
+
+        <div class="col-xs-2">{{biker.email}}</div>
+        <div class="col-xs-1">{{biker.bikeassigned}}</div>
+        <div class="col-xs-1">{{biker.shift}}</div>
+   <!--     <div class="col-xs-1"> <button class="btn btn-xs btn-info" ng-click="editPost(article.$id)">EDIT</button></div> -->
+       
+   </a>
+   <div class="col-xs-1"><button type="submit" class="btn btn-xs btn-info" ng-click="editbiker(biker.$id)" >EDIT</button></div>
+  </div>
+
+
+
+
+<!-- <div>
+        <select ng-model="selected" ng-options="b.Employeecode for b in bikerlist">
+            <option value="">-- Select a Book --</option>
+        </select>
+
+        <p>Selected Book: <b>{{ selected }}</b></p>
+
+</div> -->
+
+
+
+        </div>
+       
+      </form>
+ 
+    </div>
+</div>
+
+
+</html>
+
+

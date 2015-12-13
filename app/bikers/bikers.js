@@ -8,73 +8,157 @@ angular.module('myApp.biker', ['ngRoute','firebase'])
 //     controller: 'HomeCtrl'
 //   });
 // }])
-.controller('bikerCtrl', ['$scope','$firebase','$firebaseSimpleLogin','$location','CommonProp',function($scope,$firebase,$firebaseSimpleLogin,$location,CommonProp, $routeParams) {
+.controller('bikerCtrl', ['$scope','$firebase','$firebaseSimpleLogin','$location','CommonProp','$routeParams',function($scope,$firebase,$firebaseSimpleLogin,$location,CommonProp, $routeParams) {
 //.controller('HomeCtrl', ['$scope','$location','CommonProp','$firebaseAuth',function($scope,$location,CommonProp,$firebaseAuth) {
- var firebaseObj = new Firebase("https://ariska.firebaseio.com");
-    var loginObj = $firebaseSimpleLogin(firebaseObj);
-  
-  $scope.user = {};
-  var login={};
+      $scope.username = CommonProp.getUser(); 
 
-$scope.test = function(){
-  login.loading = true;
-}
+//       if(!$scope.username){
+//       $location.path('/home');
+// }
+          console.log($scope.username);
 
-
-  
-  $scope.user = {};
+    var bikerid = $routeParams.id;
+    var bikerObj = new Firebase("https://dotapp.firebaseio.com/Biker/" + bikerid);
 
 
+        var syn = $firebase(bikerObj);
+        $scope.bikerToUpdate = syn.$asObject();
 
-  $scope.addbikes = function() {
-    var gpsid = $scope.Biker_Information.gpsid;
-    var bikename = $scope.Biker_Information.bikename;
-    var bikemake = $scope.Biker_Information.bikemake;
-    var bikecode = $scope.Biker_Information.bikecode;
-    var biketype = $scope.Biker_Information.biketype;
-    var chassisnumber = $scope.Biker_Information.chassisnumber;
-    var batterynumber = $scope.Biker_Information.batterynumber;
-    var batteryexpiry = $scope.Biker_Information.batteryexpiry;
-    var bikeservice = $scope.Biker_Information.bikeservice;
-    var bikegivenumber = $scope.Biker_Information.bikegivenumber;
-    var idealconditioncoveredkm = $scope.Biker_Information.idealconditioncoveredkm;
-    var actualcoverdkm = $scope.Biker_Information.actualcoverdkm;
-    var bikeprice = $scope.Biker_Information.bikeprice;
-    var bikeshift = $scope.Biker_Information.bikeshift;
-     isactive = $scope.Biker_Information.isactive;
-    if(typeof isactive==='undefined')
-    {
-      isactive = false;
+      
+var firebaseObj = new Firebase("https://dotapp.firebaseio.com/Biker");    
+  var sync = $firebase(firebaseObj);
+
+  $scope.bikerlist = sync.$asArray();
+
+  $scope.addbiker = function() {
+    $location.path('/addbikers');
+  };
+
+    $scope.editbiker = function(id) {
+        $location.path('/bikeredit/' + id);
     }
-    var firebaseObj = new Firebase("https://dotapp.firebaseio.com/Bikes");
+    $scope.bikerslist = function() {
+    $location.path('/bikerslist');
+  };
+  $scope.user = {};
+
+
+
+  $scope.addbikers = function() {
+    var firstname = $scope.Biker_Information.firstname;
+    var middlename = $scope.Biker_Information.middlename;
+    var lastname = $scope.Biker_Information.lastname;
+    var fathersname = $scope.Biker_Information.fathersname;
+    var mobileno = $scope.Biker_Information.mobileno;
+    var Employeecode = $scope.Biker_Information.Employeecode;
+    var email = $scope.Biker_Information.email;
+    var dob = $scope.Biker_Information.dob;
+    var homeaddress = $scope.Biker_Information.homeaddress;
+    var relname = $scope.Biker_Information.relname;
+    var reladdress = $scope.Biker_Information.reladdress;
+    var relmobile = $scope.Biker_Information.relmobile;
+    var bloodgroup = $scope.Biker_Information.bloodgroup;
+    var bikeassigned = $scope.Biker_Information.bikeassigned;
+    var qualification = $scope.Biker_Information.qualification;
+    var operatingarea = $scope.Biker_Information.operatingarea;
+    var interests = $scope.Biker_Information.interests;
+    var children = $scope.Biker_Information.children;
+    var religion = $scope.Biker_Information.religion;
+    var ratings = $scope.Biker_Information.ratings;
+    var training = $scope.Biker_Information.training;
+    var completed = $scope.Biker_Information.completed;
+    var comments = $scope.Biker_Information.comments;
+    var shift = $scope.Biker_Information.shift;
+    var reference1 = $scope.Biker_Information.reference1;
+    var reference2 = $scope.Biker_Information.reference2;
+
+
+    var firebaseObj = new Firebase("https://dotapp.firebaseio.com/Biker");
     var fb = $firebase(firebaseObj);
  
     fb.$push({
-        gpsid:gpsid,
-        bikename:bikename,
-        bikemake: bikemake,
-        bikecode: bikecode,
-       // emailId: CommonProp.getUser()
-       biketype: biketype,
-       chassisnumber: chassisnumber,
-       batterynumber: batterynumber,
-       chassisnumber: chassisnumber,
-       batteryexpiry: batteryexpiry,
-       bikeservice: bikeservice,
-       bikegivenumber: bikegivenumber,
-       idealconditioncoveredkm: idealconditioncoveredkm,
-       actualcoverdkm: actualcoverdkm,
-       bikeprice: bikeprice,
-       bikeshift: bikeshift,
-       isactive:isactive,      
+    firstname:firstname,
+     middlename:middlename,
+    lastname:lastname,
+     fathersname:fathersname,
+     mobileno:mobileno,
+     Employeecode:Employeecode,
+     email:email,
+     dob:dob.toString(),
+     homeaddress:homeaddress,
+     relname:relname,
+     reladdress:reladdress,
+     relmobile:relmobile,
+     bloodgroup:bloodgroup,
+     bikeassigned:bikeassigned,
+     qualification:qualification,
+     operatingarea:operatingarea,
+     interests:interests,
+    children:children,
+     religion:religion,
+     ratings:ratings,
+     training:training,
+     completed:completed,
+    comments:comments,
+     shift:shift,
+     reference1:reference1,
+     reference2:reference2, 
     }).then(function(ref) {
         console.log(ref);
-        $location.path('/bikelist');
+        $location.path('/bikerslist');
     }, function(error) {
         console.log("Error:", error);
     });
  
 }
+
+
+
+
+
+
+    $scope.update = function() {
+        console.log(bikerid);
+    //    var fb = new Firebase("https://dotapp.firebaseio.com/Bikes/" + bikeid);
+        var bikerobjbyid = $firebase(bikerObj);
+        bikerobjbyid.$update({
+    firstname:$scope.bikerToUpdate.firstname,
+     middlename:$scope.bikerToUpdate.middlename,
+    lastname:$scope.bikerToUpdate.lastname,
+     fathersname:$scope.bikerToUpdate.fathersname,
+     mobileno:$scope.bikerToUpdate.mobileno,
+     Employeecode:$scope.bikerToUpdate.Employeecode,
+     email:$scope.bikerToUpdate.email,
+     dob:$scope.bikerToUpdate.dob.toString(),
+     homeaddress:$scope.bikerToUpdate.homeaddress,
+     relname:$scope.bikerToUpdate.relname,
+     reladdress:$scope.bikerToUpdate.reladdress,
+     relmobile:$scope.bikerToUpdate.relmobile,
+     bloodgroup:$scope.bikerToUpdate.bloodgroup,
+     bikeassigned:$scope.bikerToUpdate.bikeassigned,
+     qualification:$scope.bikerToUpdate.qualification,
+     operatingarea:$scope.bikerToUpdate.operatingarea,
+     interests:$scope.bikerToUpdate.interests,
+    children:$scope.bikerToUpdate.children,
+     religion:$scope.bikerToUpdate.religion,
+     ratings:$scope.bikerToUpdate.ratings,
+     training:$scope.bikerToUpdate.training,
+     completed:$scope.bikerToUpdate.completed,
+    comments:$scope.bikerToUpdate.comments,
+     shift:$scope.bikerToUpdate.shift,
+     reference1:$scope.bikerToUpdate.reference1,
+     reference2:$scope.bikerToUpdate.reference2, 
+
+
+        }).then(function(ref) {
+           // console.log(ref.key()); // bar
+           // $('#editModal').modal('hide')
+           $location.path('/bikerslist');
+        }, function(error) {
+            console.log("Error:", error);
+        });
+
+    }
 
 
 

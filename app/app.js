@@ -7,6 +7,7 @@ angular.module('myApp', [
   'myApp.register',
   'myApp.bike',
   'myApp.bikeedit',
+  'myApp.biker'
 
 ]).
 config(['$routeProvider', function($routeProvider) {
@@ -48,6 +49,10 @@ config(['$routeProvider', function($routeProvider) {
 		templateUrl: 'bikes/bikeedit.html',
 		controller: 'BikeiditCtrl'
 	})
+		.when('/bikeredit/:id', {
+		templateUrl: 'bikers/bikeredit.html',
+		controller: 'bikerCtrl'
+	})
 	// 	.when('/register', {
 	// 	templateUrl: 'home/register.html',
 	// 	controller: 'RegisterCtrl'
@@ -55,6 +60,11 @@ config(['$routeProvider', function($routeProvider) {
 
 		.when('/bikelist', {
 		templateUrl: 'bikes/bikelist.html',
+		controller: 'BikeCtrl'
+	})
+
+			.when('/bikerslist', {
+		templateUrl: 'bikers/bikerlist.html',
 		controller: 'BikeCtrl'
 	})		
 
