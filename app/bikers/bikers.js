@@ -27,6 +27,11 @@ angular.module('myApp.biker', ['ngRoute','firebase'])
 $scope.BikeridToupdate ={};
 
 
+    var bikerid = $routeParams.id;
+    var bikebiker = new Firebase("https://dotapp.firebaseio.com/Biker");
+  var sync = $firebase(bikebiker);
+
+  $scope.bikerlist = sync.$asArray();
 
           console.log($scope.username);
 
@@ -39,10 +44,10 @@ $scope.BikeridToupdate ={};
 
       
 
-var firebaseObj = new Firebase("https://dotapp.firebaseio.com/Biker");    
+var firebaseObj = new Firebase("https://dotapp.firebaseio.com/BikeBiker");    
   var sync = $firebase(firebaseObj);
 
-  $scope.bikerlist = sync.$asArray();
+  $scope.assignedbikelist = sync.$asArray();
 
 
 $scope.assign = function(id) {
@@ -199,12 +204,81 @@ $scope.assign = function(id) {
 
 
     $scope.updatebikeAssigned = function() {
+
+
+    //  var test = new Firebase("https://dotapp.firebaseio.com/Biker")
+    // //.orderBy('Employeecode')
+    // test.orderByChild("Employeecode")
+    // .startAt('dot1501')
+    // .endAt('dot1501')
+    // .on('value', function(snap) {
+    //    console.log('accounts matching email address', snap.val())
+    // });
+
+        var firstname;
+        var middlename;
+        var lastname;
+        var empcode;
+        var bikeridbyvalue;
+
         console.log($scope.BikeridToupdate);
-        console.log(bikerid);
-    var bikerObj = new Firebase("https://dotapp.firebaseio.com/Biker/" + $scope.BikeridToupdate);
+        console.log(bikerid);      
+var messagesPath = new Firebase("https://dotapp.firebaseio.com/BikeBiker/");
+    var Messages = messagesPath.child($scope.BikeridToupdate);
+    Messages.on("value", function (snapshot) {
+      var messagesObj = snapshot.val();
+      // firstname = messagesObj.firstname;
+      // middlename = messagesObj.middlename;
+      // lastname = messagesObj.lastname;
+      empcode = messagesObj.Employeecode;
+      return messagesObj;
+    }, function (errorObject) {
+      console.log("Error code: " + errorObject.code);
+    });
+
+
+var ref = new Firebase("https://dotapp.firebaseio.com/Biker");
+
+ref.orderByChild("Employeecode").equalTo(empcode).on("child_added", function(snapshot) {
+  console.log(snapshot.key());
+  bikeridbyvalue = snapshot.key();
+  var bikeobj = snapshot.val();
+  firstname = bikeobj.firstname;
+  middlename = bikeobj.middlename;
+  lastname = bikeobj.lastname;
+ // empcode = snapshot.Employeecode;
+
+});
+
+
+    var bikeassigned = $scope.selected.bikename;
+    var fromdate= $scope.bikebiker.fromdate;
+    var todate = $scope.bikebiker.todate;
+    var bikebiker = new Firebase("https://dotapp.firebaseio.com/BikeBiker/" + $scope.BikeridToupdate);
+    var BikeBikerObj = $firebase(bikebiker);
+    BikeBikerObj.$update({
+     firstname:firstname,
+     middlename:middlename,
+     lastname:lastname,
+     Employeecode:empcode,
+     bikeassigned:bikeassigned,
+     fromdate:fromdate,
+     todate:todate,
+    }).then(function(ref) {
+        console.log(ref);
+      //  $location.path('/bikerslist');
+    //  $('#editModal').modal('hide');
+    }, function(error) {
+        console.log("Error:", error);
+    });
+
+    var bikerObj = new Firebase("https://dotapp.firebaseio.com/Biker/" + bikeridbyvalue);
     //    var fb = new Firebase("https://dotapp.firebaseio.com/Bikes/" + bikeid);
     var bikerobjbyid = $firebase(bikerObj);
     console.log($scope.selected.bikename);
+
+
+
     bikerobjbyid.$update({
 
        bikeassigned:$scope.selected.bikename,

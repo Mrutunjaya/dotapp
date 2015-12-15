@@ -60,7 +60,11 @@
             <input type="Email" class="form-control textboxmargin" data-ng-model="bikerToUpdate.email" placeholder="Email" required="" autofocus="">
             </div>
             <div class="col-xs-3">
-            <input type="date" class="form-control textboxmargin" data-ng-model="bikerToUpdate.dob" placeholder="Date of Birth" required="" autofocus="">
+
+        <input placeholder="Date of Birth" class="form-control textboxmargin" type="text" data-ng-model="bikerToUpdate.dob" onfocus="(this.type='date')"  id="date">
+
+          <!--   <input type="date" class="form-control textboxmargin" data-ng-model="bikerToUpdate.dob" placeholder="Date of Birth" required="" autofocus=""> -->
+
             </div>
             <div class="col-xs-3">
             <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.homeaddress" placeholder="Home Address" required="" autofocus="">
