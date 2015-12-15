@@ -63,9 +63,14 @@ config(['$routeProvider', function($routeProvider) {
 		controller: 'BikeCtrl'
 	})
 
-			.when('/bikerslist', {
+		.when('/bikerslist', {
 		templateUrl: 'bikers/bikerlist.html',
 		controller: 'BikeCtrl'
+	})	
+
+		.when('/assignbike', {
+		templateUrl: 'bikers/assignbikes.html',
+		controller: 'bikerCtrl'
 	})		
 
   $routeProvider.otherwise({redirectTo: '/home'});

@@ -10,6 +10,7 @@
     
   </head>
 
+<div ng-controller="bikerCtrl">
 
 <nav class="navbar navbar-inverse sidebar" role="navigation" style="height:100%;position:fixed">
     <div class="container-fluid">
@@ -26,11 +27,10 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-    <li class="active"><a ng-click="bikelist()" style="cursor: pointer;">Bikes</a></li>
-				<li ><a class="" ng-click="bikerlist()" style="cursor: pointer;">Bikers</a></li>
+        <li class="active"><a ng-click="bikelist()" style="cursor: pointer;">Bikes</a></li>
+				<li ><a class="" ng-click="bikerslist()" style="cursor: pointer;">Bikers</a></li>
 
-
-				<li ><a href="#">Assign Bikes<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
+				<li ><a class="" ng-click="assignbike()" style="cursor: pointer;">Assign Bikes</a></li>
 
         <li ng-click="logOut()"> <a href="#/"><span ng-hide="!username" ng-cloak>Logout</span> </a></li>
 
@@ -45,13 +45,17 @@
 <div class="main">
 <!-- Content Here -->
 
-    <div class="" ng-controller="BikeCtrl">
+    <div class="">
         <div class="" style="padding-bottom:0px;">
         <div class="col-xs-12">
-            <div class="col-xs-4" style="font-size:28px">Bike List</div>
+            <div class="col-xs-4" style="font-size:28px">Bike Assigned</div>
             <span class="pull-right" style=float:left> 
-           <span> <button style="" type="submit" ng-click="addbike()" class="btn btn-lg btn-primary btn-block">Add Bike</button>
-           </span>
+
+<!--            <span> <button style="" type="submit" ng-click="addbikers()" class="btn btn-lg btn-primary btn-block">Add Biker</button>
+           </span> -->
+<!-- 
+           <span> <button style="" type="submit" ng-click="addbiker()" class="btn btn-lg btn-primary btn-block">Add Employee</button>
+           </span> -->
             </div>
             <hr/>
 
@@ -61,31 +65,38 @@
         <form class="form-signin" role="form">
 
         <div class="row">
-        <div class="col-xs-2"><h5>Bike Name</h5></div>
-        <div class="col-xs-2"><h5>Bike Make</h5></div>
-        <div class="col-xs-2"><h5>Bike Code</h5></div>
-       <div class="col-xs-2"><h5>Bike Type</h5></div>
-                  
-       <div class="col-xs-2"><h5>Bike Shift</h6></div>
+        <div class="col-xs-3"><h5>EmpCode</h5></div>
+        <div class="col-xs-3"><h5>EmpName</h5></div>
+        <div class="col-xs-3"><h5>Bike Assigned</h5></div>
 
+                       
 <br/><br/><br/><br/>
 
-        <div class="" ng-repeat="article in articles">
+        <div class="row" ng-repeat="biker in bikerlist">
         <a href="" class="">
-        <div class="col-xs-2">{{article.bikename}}</div>
-        <div class="col-xs-2">{{article.bikemake}}</div>
-        <div class="col-xs-2">{{article.bikecode}}</div>
-        <div class="col-xs-2">{{article.biketype}}</div>
-
-        <div class="col-xs-2">{{article.bikeshift}}</div>
+        <div class="col-xs-3">{{biker.Employeecode}}</div>
+        <div class="col-xs-3">{{biker.firstname}} &nbsp;&nbsp;{{biker.lastname}}</div>
+        <div class="col-xs-3">{{biker.bikeassigned}}</div>
    <!--     <div class="col-xs-1"> <button class="btn btn-xs btn-info" ng-click="editPost(article.$id)">EDIT</button></div> -->
        
    </a>
-   <div class="col-xs-2"><button type="submit" class="btn btn-xs btn-info" ng-click="editPost1(article.$id)" >EDIT</button></div>
-</div>
-        </div>
-       
-      </form>
+   <div class="col-xs-1"><button type="submit" class="btn btn-xs btn-info" ng-click="assign(biker.$id)" >Change</button></div>
+  </div>
+
+
+
+
+<!-- <div>
+        <select ng-model="selected" ng-options="b.Employeecode for b in bikerlist">
+            <option value="">-- Select a Book --</option>
+        </select>
+
+        <p>Selected Book: <b>{{ selected }}</b></p>
+
+</div> -->
+
+
+
 
 
 
@@ -95,37 +106,24 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="editModalLabel">Update Post</h4>
+        <h4 class="modal-title" id="editModalLabel">Assign Bike</h4>
       </div>
       <div class="modal-body">
         <form role="form">
-        <div class="col-xs-3">
-           <input type="text" class="form-control textboxmargin" data-ng-model="postToUpdate.gpsid" placeholder="Gps Id" required="" autofocus="">
-        </div>
+          <div>
+                  <select ng-model="selected" ng-options="b.bikename for b in allbikes">
+                      <option value="">-- Select a Bike --</option>
+                  </select>
 
-        <div class="col-xs-3">
-           <input type="text" class="form-control textboxmargin" data-ng-model="postToUpdate.bikename" placeholder="Bike Name" required="" autofocus="">
-        </div>
-            
-        <div class="col-xs-3">
-           <input type="text" class="form-control textboxmargin" data-ng-model="postToUpdate.bikemake" placeholder="Bike Make" required="" autofocus="">
-        </div>
-            
-            <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="postToUpdate.bikecode" placeholder="Bike Code Number" required="" autofocus="">
-            </div>
-
-            <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="postToUpdate.biketype" placeholder=" Bike Type" required="" autofocus="">
-            </div>
-            <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="postToUpdate.chassisnumber" placeholder="Chassis Number" required="" autofocus="">
-            </div>
+                <!--   <p data-ng-model="{{ selected.bikename }}">Selected Bike: {{selected.bikename}}</p>
+ -->
+<!--  <p class="form-control textboxmargin" data-ng-model='selected.bikename' placeholder="MiddleName" required="" autofocus=""></p> -->
+                  <p data-ng-model ="selected.bikename " class="" >Selected Bike: {{selected.bikename}}</p>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" ng-click="update()">Publish</button>
+        <button type="button" class="btn btn-primary" ng-click="updatebikeAssigned()">Assign</button>
       </div>
     </div>
   </div>
@@ -134,10 +132,15 @@
 
 
 
+
+
+        </div>
+       
+      </form>
  
     </div>
 </div>
-
+</div>
 
 </html>
 

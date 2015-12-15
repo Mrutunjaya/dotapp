@@ -121,6 +121,11 @@ angular.module('myApp.bike', ['ngRoute','firebase'])
     $location.path('/addbikes');
   };
 
+      $scope.assignbike = function() {
+    $location.path('/assignbike');
+  };
+
+
 
     $scope.editSession = function(id) {
 

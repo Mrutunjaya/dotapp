@@ -27,10 +27,10 @@
 		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
 			<ul class="nav navbar-nav">
     <li class="active"><a ng-click="bikelist()" style="cursor: pointer;">Bikes</a></li>
-				<li ><a class="" ng-click="bikerlist()" style="cursor: pointer;">Bikers</a></li>
+				<li ><a class="" ng-click="bikerslist()" style="cursor: pointer;">Bikers</a></li>
 
 
-				<li ><a href="#">Assign Bikes<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
+				<li ><a class="" ng-click="assignbike()" style="cursor: pointer;">Assign Bikes</a></li>
 
         <li ng-click="logOut()"> <a href="#/"><span ng-hide="!username" ng-cloak>Logout</span> </a></li>
 
@@ -62,24 +62,24 @@
 
 
         </div>
-        <form class="form-signin" role="form">
+        <form class="table table-striped table-condensed dt-head-center" role="form">
 
-        <div class="row">
-        <div class="col-xs-2"><h6>Employeecode</h6></div>
+        <div class="row table table-striped table-condensed dt-head-center">
+        <div class="col-xs-2"><h5>Empcode</h5></div>
         <div class="col-xs-2"><h5>Firstname</h5></div>
-       <div class="col-xs-1"><h6>Lastname</h5></div>
-       <div class="col-xs-2"><h6>Mobileno</h6></div>
-       <div class="col-xs-2"><h6>Email</h6></div>
-       <div class="col-xs-1"><h6>Bike Assigned</div>
-       <div class="col-xs-1"><h6>Shift</div>                            
+       <div class="col-xs-1"><h5>Lastname</h5></div>
+       <div class="col-xs-2"><h5>Mobileno</h5></div>
+       <div class="col-xs-2"><h5>Email</h5></div>
+       <div class="col-xs-1"><h5>Bike Assigned</h5></div>
+       <div class="col-xs-1"><h5>Shift</h5></div>                            
 
 <br/><br/><br/><br/>
 
-        <div class="" ng-repeat="biker in bikerlist">
+        <div class="row table table-striped table-condensed dt-head-center" ng-repeat="biker in bikerlist">
         <a href="" class="">
-        <div class="col-xs-2">{{biker.Employeecode}}</div>
+        <div class="col-xs-1">{{biker.Employeecode}}</div>
         <div class="col-xs-2">{{biker.firstname}}</div>
-        <div class="col-xs-1">{{biker.lastname}}</div>
+        <div class="col-xs-2">{{biker.lastname}}</div>
         <div class="col-xs-2">{{biker.mobileno}}</div>
        <!--  <div class="col-xs-1">{{article.batteryexpiry}}</div> -->
 

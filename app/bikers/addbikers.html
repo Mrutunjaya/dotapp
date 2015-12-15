@@ -18,7 +18,7 @@
             <ul class="nav navbar-nav">
                <li class="active"><a ng-click="bikelist()" style="cursor: pointer;">Bikes</a></li>
                 <li ><a class=""  ng-click="bikerslist()" style="cursor: pointer;">Bikers</a></li>
-                <li ><a href="#">Assign Bikes<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
+                <li ><a class="" ng-click="assignbike()" style="cursor: pointer;">Assign Bikes</a></li>
 <!--                <li ><a href="#"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
                 <li ><a href="#"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li> -->
 
@@ -69,6 +69,9 @@
             <input type="text" class="form-control textboxmargin" data-ng-model="Biker_Information.homeaddress" placeholder="Home Address" required="" autofocus="">
             </div>
             <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="Biker_Information.tempaddress" placeholder="Temporary Address" required="" autofocus="">
+            </div>  
+            <div class="col-xs-3">
             <input type="text" class="form-control textboxmargin" data-ng-model="Biker_Information.bloodgroup" placeholder="Blood Group" required="" autofocus="">
             </div>
             <div class="col-xs-3">
@@ -109,8 +112,62 @@
             </div>
             <div class="col-xs-3">
             <input type="text" class="form-control textboxmargin" data-ng-model="Biker_Information.reference2" placeholder="Reference 2" required="" autofocus="">
-            </div>     
-            <div class="col-xs-12"><h3>Relatives Information <h3><hr/></div>
+            </div>    
+
+            <br/>
+
+        <div class="col-xs-4" style="font-size:20px;font-weight:bold"><h4>Marital Status <h4>
+        <hr/>
+        <div class="col-xs-6">
+            <label>
+    <input type="radio" name="marritalstatus" value="Married" ng-model="Biker_Information.maritalstatus">
+       <span style="font-size:14px;font-weight:bold">Married</span>
+            </label>
+        </div>
+        <div class="col-xs-6">
+            <label>
+<input type="radio" name="marritalstatus" value="Unmarried" ng-model="Biker_Information.maritalstatus">
+        <span style="font-size:14px;font-weight:bold">Unmarried</span>
+            </label>
+        </div>
+        </div>
+
+
+        <div class="col-xs-4" style="font-size:20px;font-weight:bold"><h4>Employee Type <h4>
+        <hr/>
+        <div class="col-xs-6">
+            <label>
+        <input type="radio" name="employeetype" value="Permanent" ng-model="Biker_Information.employeetype">
+       <span style="font-size:14px;font-weight:bold">Permanent</span>
+            </label>
+        </div>
+        <div class="col-xs-6">
+            <label>
+<input type="radio" name="employeetype" value="On Commission" ng-model="Biker_Information.employeetype">
+        <span style="font-size:14px;font-weight:bold">On Commission</span>
+        </label>
+        </div>
+        </div>
+
+
+        <div class="col-xs-4" style="font-size:20px;font-weight:bold"><h4>Gender <h4>
+        <hr/>
+        <div class="col-xs-6">
+            <label>
+        <input type="radio" name="gender" value="M" ng-model="Biker_Information.gender">
+       <span style="font-size:14px;font-weight:bold">M</span>
+            </label>
+        </div>
+        <div class="col-xs-6">
+        <label>
+        <input type="radio" name="gender" value="F" ng-model="Biker_Information.gender">
+        <span style="font-size:14px;font-weight:bold">F</span>
+        </label>
+        </div>
+        </div>
+
+
+            <div class="col-xs-12" style="font-size:20px;font-weight:bold"><h4>Relatives Information</h4> <hr/></div>
 
             <div class="col-xs-4">
             <input type="text" class="form-control textboxmargin" data-ng-model="Biker_Information.relname" placeholder="Name" required="" autofocus="">
