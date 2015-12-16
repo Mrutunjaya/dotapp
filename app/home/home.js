@@ -68,7 +68,9 @@ if (!$scope.regForm.$invalid) {
 
       var firebaseObj = new Firebase("https://dotapp.firebaseio.com");
   var loginObj = $firebaseSimpleLogin(firebaseObj);
- 
+  
+
+
     return {
         getUser: function() {
             return user;

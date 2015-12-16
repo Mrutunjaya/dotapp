@@ -14,7 +14,22 @@ angular.module('myApp.bike', ['ngRoute','firebase'])
  
 
 
-.controller('BikeCtrl', ['$scope', '$firebase', 'CommonProp','$location', function($scope, $firebase, CommonProp,$location) {
+.controller('BikeCtrl', ['$scope', '$firebase', 'CommonProp','$location','$rootScope','$routeParams', function($scope, $firebase, CommonProp,$location,$rootScope,$routeParams) {
+     
+      $rootScope.loggedIn = CommonProp.getUser();
+
+
+      console.log($rootScope.loggedIn);
+
+      if($scope.loggedIn)
+      {
+        console.log("loggedIn")
+      }
+      else
+      {
+        console.log('not loggedIn')
+      }
+
       $scope.username = CommonProp.getUser(); 
 
 //       if(!$scope.username){

@@ -90,7 +90,8 @@ $scope.assign = function(id) {
     var reladdress = $scope.Biker_Information.reladdress;
     var relmobile = $scope.Biker_Information.relmobile;
     var bloodgroup = $scope.Biker_Information.bloodgroup;
-    var bikeassigned = $scope.Biker_Information.bikeassigned;
+    // var bikeassigned = $scope.Biker_Information.bikeassigned;
+    var bikeassigned = '';
     var qualification = $scope.Biker_Information.qualification;
     var operatingarea = $scope.Biker_Information.operatingarea;
     var interests = $scope.Biker_Information.interests;
@@ -251,7 +252,7 @@ ref.orderByChild("Employeecode").equalTo(empcode).on("child_added", function(sna
 });
 
 
-    var bikeassigned = $scope.selected.bikename;
+    var bikeassigned = $scope.selected.bikecode;
     var fromdate= $scope.bikebiker.fromdate;
     var todate = $scope.bikebiker.todate;
     var bikebiker = new Firebase("https://dotapp.firebaseio.com/BikeBiker/" + $scope.BikeridToupdate);
@@ -281,7 +282,7 @@ ref.orderByChild("Employeecode").equalTo(empcode).on("child_added", function(sna
 
     bikerobjbyid.$update({
 
-       bikeassigned:$scope.selected.bikename,
+       bikeassigned:$scope.selected.bikecode,
     // bikeassigned:$scope.bikerToUpdate.bikeassigned,     
         }).then(function(ref) {
            // console.log(ref.key()); // bar
