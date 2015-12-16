@@ -52,9 +52,17 @@
             <p class="col-xs-12" style="margin-top:10px; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));"></p>
 
 
+            <span class="pull-right" style=float:left> 
+
+<!--            <span> <button style="" type="submit" ng-click="addbikers()" class="btn btn-lg btn-primary btn-block">Add Biker</button>
+           </span> -->
+
+       <button style="" type="submit" ng-click="newassign()" class="btn btn-primary btn-group-xs">New Assign</button>
+           </span>
+
+
             </div>
             <hr/>
-
 
 
         </div>
@@ -168,6 +176,61 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" ng-click="updatebikeAssigned()">Assign</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="addassignedbikeModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width:750px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="editModalLabel">Assign Bike</h4>
+      </div>
+      <div class="modal-body" style="height:100px">
+        <form role="form">
+          <div class="col-xs-3">
+                  <select class="form-control textboxmargin" ng-model="selected1" ng-options="b.Employeecode for b in bikerlist">
+                      <option value="">-- Select a Biker --</option>
+                  </select>
+                  </div>
+
+
+        <div class="col-xs-3">
+                  <select class="form-control textboxmargin" ng-model="selected2" ng-options="b.bikecode for b in allbikes">
+                      <option value="">-- Select a Bike --</option>
+                  </select>
+        </div>
+        <div class="col-xs-3">
+                  <input placeholder="From Date" class="form-control textboxmargin" type="text" data-ng-model="bikebiker.fromdate1" onfocus="(this.type='date')"  id="date">
+        </div>
+        <div class="col-xs-3">
+                  <input placeholder="Todate" class="form-control textboxmargin" type="text" data-ng-model="bikebiker.todate1" onfocus="(this.type='date')"  id="date1">
+        </div>
+
+
+
+
+              <!-- <p data-ng-model ="selected.bikename " class="" >Selected Bike: {{selected.bikename}}</p> -->
+              <p data-ng-model ="selected.bikename " class="" ></p>
+
+<!--                     <input type="date" class="form-control textboxmargin" data-ng-model="Biker_Information.dob" placeholder="Date of Birth" required="" autofocus=""> -->
+
+<!-- <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date"> -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="newbikeAssigned()">Assign</button>
       </div>
     </div>
   </div>

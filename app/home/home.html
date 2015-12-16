@@ -18,7 +18,7 @@
  
     <div>
 
-    <div class="container"> <!--ng-if="isLogged()"-->
+    <div class="container" style="margin-top:100px"> <!--ng-if="isLogged()"-->
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -50,7 +50,7 @@
     <input type="password" name="password" style="padding:5px" class="form-control  input-sm" placeholder="Password" ng-model="user.password" ng-minlength="8" required>
     <p class="help-block" style="color:red;" ng-show="regForm.password.$error.minlength">Min password length is 8 characters.</p>
 </div>
-<a href="#/register"> Sign Up</a>
+<!-- <a href="#/register"> Sign Up</a> -->
 <!-- <div class="form-group"><a ng-click="register()" style="cursor: pointer;"> Sign Up</></a> -->
 
  <p style="color:red;" ng-show="regError">{{regErrorMessage}}</p>

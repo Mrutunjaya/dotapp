@@ -56,6 +56,12 @@ $scope.assign = function(id) {
 }
 
 
+$scope.newassign = function() {
+     //$scope.BikeridToupdate = id;
+    $('#addassignedbikeModal').modal();      // triggers the modal pop up
+}
+
+
 
   $scope.addbiker = function() {
     $location.path('/addbikers');
@@ -294,6 +300,83 @@ ref.orderByChild("Employeecode").equalTo(empcode).on("child_added", function(sna
         });
 
     }
+
+
+
+      $scope.newbikeAssigned = function() {
+        var firstname;
+        var middlename;
+        var lastname;
+        var empcode;
+        var bikeridbyvalue1;
+        console.log($scope.BikeridToupdate);
+        console.log(bikerid);      
+var messagesPath = new Firebase("https://dotapp.firebaseio.com/BikeBiker/");
+    // var Messages = messagesPath.child($scope.BikeridToupdate);
+    // Messages.on("value", function (snapshot) {
+    //   var messagesObj = snapshot.val();
+    //   empcode = messagesObj.Employeecode;
+    //   return messagesObj;
+    // }, function (errorObject) {
+    //   console.log("Error code: " + errorObject.code);
+    // });
+
+var ref = new Firebase("https://dotapp.firebaseio.com/Biker");
+
+ref.orderByChild("Employeecode").equalTo($scope.selected1.Employeecode).on("child_added", function(snapshot) {
+  console.log(snapshot.key());
+  bikeridbyvalue1 = snapshot.key();
+  var bikeobj = snapshot.val();
+  firstname = bikeobj.firstname;
+  middlename = bikeobj.middlename;
+  lastname = bikeobj.lastname;
+  empcode = snapshot.Employeecode;
+
+});
+
+    var empcode1 = $scope.selected1.Employeecode;
+    var bikeassigned = $scope.selected2.bikecode;
+    var fromdate= $scope.bikebiker.fromdate1;
+    var todate = $scope.bikebiker.todate1;
+    var bikebiker = new Firebase("https://dotapp.firebaseio.com/BikeBiker");
+    var BikeBikerObj = $firebase(bikebiker);
+    BikeBikerObj.$push({
+     firstname:firstname,
+     middlename:middlename,
+     lastname:lastname,
+     Employeecode:empcode1,
+     bikeassigned:bikeassigned,
+     fromdate:fromdate,
+     todate:todate,
+    }).then(function(ref) {
+        console.log(ref);
+      //  $location.path('/bikerslist');
+    //  $('#editModal').modal('hide');
+    }, function(error) {
+        console.log("Error:", error);
+    });
+
+    var bikerObj = new Firebase("https://dotapp.firebaseio.com/Biker/" + bikeridbyvalue1);
+    //    var fb = new Firebase("https://dotapp.firebaseio.com/Bikes/" + bikeid);
+    var bikerobjbyid = $firebase(bikerObj);
+   // console.log($scope.selected.bikename);
+
+
+
+    bikerobjbyid.$update({
+
+       bikeassigned:$scope.selected2.bikecode,
+    // bikeassigned:$scope.bikerToUpdate.bikeassigned,     
+        }).then(function(ref) {
+           // console.log(ref.key()); // bar
+           // $('#editModal').modal('hide')
+           $('#addassignedbikeModal').modal('hide');
+          // $location.path('/bikerslist');
+        }, function(error) {
+            console.log("Error:", error);
+        });
+
+    }  
 
 
 
