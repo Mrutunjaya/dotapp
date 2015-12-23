@@ -27,6 +27,16 @@ angular.module('myApp.bikeedit', ['ngRoute','firebase'])
   $scope.back = function() {
     $location.path('/bikelist');
   };
+    $scope.bikelist = function() {
+    $location.path('/bikelist');
+  };
+    $scope.bikerlist = function() {
+    $location.path('/bikerslist');
+  };
+
+        $scope.assignbike = function() {
+    $location.path('/assignbike');
+  };
 
 
 var bikeid = $routeParams.id;

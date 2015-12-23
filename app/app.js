@@ -33,7 +33,7 @@ config(['$routeProvider', function($routeProvider) {
 
 	.when('/addbikers', {
 		templateUrl: 'bikers/addbikers.html',
-		controller: 'HomeCtrl'
+		controller: 'bikerCtrl'
 	})
 	// 	.when('/bikeedit', {
 	// 	templateUrl: 'bikes/bikeedit.html',

@@ -8,16 +8,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Brand</a>
+            <a class="" href="#"><img src="img/doticon.png"></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
             <ul class="nav navbar-nav">
-               <li class="active"><a ng-click="bikelist()" style="cursor: pointer;">Bikes</a></li>
-                <li ><a class=""  ng-click="bikerslist()" style="cursor: pointer;">Bikers</a></li>
-                <li ><a class="" ng-click="assignbike()" style="cursor: pointer;">Assign Bikes</a></li>
-<!--                <li ><a href="#"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
-                <li ><a href="#"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li> -->
+    <li class=""><a ng-click="bikelist()" style="cursor: pointer;color:#ffffff">Bikes
+<span style="font-size:16px;margin-right:-12px" class="pull-right hidden-xs showopacity fa fa-motorcycle"></span>
+    </a></li>
+    <li ><a class="" ng-click="bikerslist()" style="cursor: pointer;color:#ffffff">Bikers
+<span style="font-size:16px;margin-right:-12px" class="pull-right hidden-xs showopacity fa fa-user"></span>
+
+    </a></li>
+    <li ><a class="" ng-click="assignbike()" style="cursor: pointer;color:#ffffff">Assign Bikes
+
+<span style="font-size:16px;margin-right:-12px" class="pull-right hidden-xs showopacity "><img src="img/bike1.png" width="22" height="20"></span>
+
+    </a></li>
+
+    <li ng-click="logOut()"> <a style="cursor: pointer;color:#ffffff" href="#/">Logout<span class="fa fa-sign-out pull-right"  style="color:#ffffff;margin-right:-12px" ng-hide="!username" ng-cloak></span> </a></li>
 
             </ul>
         </div>
@@ -35,29 +44,29 @@
 
         <div class="row">
         <div class="col-xs-3">
-           <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.firstname" placeholder="Firstname" required="" autofocus=""> 
+           <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.firstName" placeholder="Firstname" required="" autofocus=""> 
         </div>
             
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.middlename" placeholder="MiddleName" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.middleName" placeholder="MiddleName" required="" autofocus="">
             </div>
 
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.lastname" placeholder="Lastname" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.lastName" placeholder="Lastname" required="" autofocus="">
             </div>
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.fathersname" placeholder="Father'sname" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.fatherName" placeholder="Father'sname" required="" autofocus="">
             </div>
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.mobileno" placeholder="Mobile Number" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.mobileNo" placeholder="Mobile Number" required="" autofocus="">
             </div>
 
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.Employeecode" placeholder="Employee Code" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.employeeCode" placeholder="Employee Code" required="" autofocus="">
             </div>  
 
             <div class="col-xs-3">
-            <input type="Email" class="form-control textboxmargin" data-ng-model="bikerToUpdate.email" placeholder="Email" required="" autofocus="">
+            <input type="Email" class="form-control textboxmargin" data-ng-model="bikerToUpdate.email" placeholder="Email" ng-readonly="true">
             </div>
             <div class="col-xs-3">
 
@@ -67,53 +76,53 @@
 
             </div>
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.homeaddress" placeholder="Home Address" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.homeAddress" placeholder="Home Address"  autofocus="">
             </div>
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.tempaddress" placeholder="Temporary Address" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.tempAddress" placeholder="Temporary Address"  autofocus="">
             </div>  
 
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.bloodgroup" placeholder="Blood Group" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.bloodGroup" placeholder="Blood Group"  autofocus="">
+            </div>
+<!--             <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.bikeAssigned" placeholder="Bike Assigned"  autofocus="">
+            </div> -->
+            <div class="col-xs-3">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.qualification" placeholder="Qualification"  autofocus="">
             </div>
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.bikeassigned" placeholder="Bike Assigned" required="" autofocus="">
-            </div>
-            <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.qualification" placeholder="Qualification" required="" autofocus="">
-            </div>
-            <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.operatingarea" placeholder="Operating Area" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.operatingArea" placeholder="Operating Area"  autofocus="">
             </div> 
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.interests" placeholder="Interests" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.interests" placeholder="Interests"  autofocus="">
             </div>  
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.children" placeholder="Children" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.children" placeholder="Children"  autofocus="">
             </div>  
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.religion" placeholder="Religion" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.religion" placeholder="Religion"  autofocus="">
             </div>  
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.ratings" placeholder="Ratings" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.rating" placeholder="Ratings"  autofocus="">
             </div>                                                                         
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.training" placeholder="Training" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.training" placeholder="Training"  autofocus="">
             </div>
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.completed" placeholder="Completed" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.completed" placeholder="Completed"  autofocus="">
             </div>
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.comments" placeholder="Comments" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.comments" placeholder="Comments"  autofocus="">
             </div>                                              
             <div class="col-xs-3">
             <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.shift" placeholder="Shift" required="" autofocus="">
             </div>
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.reference1" placeholder="Reference 1" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.reference1" placeholder="Reference 1"  autofocus="">
             </div>
             <div class="col-xs-3">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.reference2" placeholder="Reference 2" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.reference2" placeholder="Reference 2"  autofocus="">
             </div>  
 
 
@@ -121,13 +130,13 @@
         <hr/>
         <div class="col-xs-6">
             <label>
-        <input type="radio" name="marritalstatus" value="Married" ng-model="bikerToUpdate.maritalstatus">
+        <input type="radio" name="marritalstatus" value="Married" ng-model="bikerToUpdate.maritalStatus">
        <span style="font-size:14px;font-weight:bold">Married</span>
             </label>
         </div>
         <div class="col-xs-6">
             <label>
-    <input type="radio" name="marritalstatus" value="Unmarried" ng-model="bikerToUpdate.maritalstatus">
+    <input type="radio" name="marritalstatus" value="Unmarried" ng-model="bikerToUpdate.maritalStatus">
         <span style="font-size:14px;font-weight:bold">Unmarried</span>
             </label>
         </div>
@@ -138,13 +147,13 @@
         <hr/>
         <div class="col-xs-6">
             <label>
-        <input type="radio" name="employeetype" value="Permanent" ng-model="bikerToUpdate.employeetype">
+        <input type="radio" name="employeetype" value="Permanent" ng-model="bikerToUpdate.employeeType">
        <span style="font-size:14px;font-weight:bold">Permanent</span>
             </label>
         </div>
         <div class="col-xs-6">
             <label>
-<input type="radio" name="employeetype" value="On Commission" ng-model="bikerToUpdate.employeetype">
+<input type="radio" name="employeetype" value="On Commission" ng-model="bikerToUpdate.employeeType">
         <span style="font-size:14px;font-weight:bold">On Commission</span>
         </label>
         </div>
@@ -170,13 +179,13 @@
             <div class="col-xs-12"><h3>Relatives Information <h3><hr/></div>
 
             <div class="col-xs-4">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.relname" placeholder="Name" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.relativeName" placeholder="Name"  autofocus="">
             </div>
             <div class="col-xs-4">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.reladdress" placeholder="Address" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.relativeAddress" placeholder="Address"  autofocus="">
             </div>
             <div class="col-xs-4">
-            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.relmobile" placeholder="Mobile Number" required="" autofocus="">
+            <input type="text" class="form-control textboxmargin" data-ng-model="bikerToUpdate.relativeMobile" placeholder="Mobile Number"  autofocus="">
             </div>
                            
             <div class="col-xs-12"> <button style="width:10%" type="submit" ng-click="update()" class="btn btn-sm btn-success">Update</button></div>

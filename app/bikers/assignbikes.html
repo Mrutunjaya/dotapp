@@ -3,10 +3,10 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
-    <title>AngularJS & Firebase Web App</title>
+    <title>Dot Web App</title>
 
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="blog.css" rel="stylesheet">
+<!--     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="blog.css" rel="stylesheet"> -->
     
   </head>
 
@@ -22,17 +22,29 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Brand</a>
+			<a class="" href="#"><img src="img/doticon.png"></a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-        <li class="active"><a ng-click="bikelist()" style="cursor: pointer;">Bikes</a></li>
-				<li ><a class="" ng-click="bikerslist()" style="cursor: pointer;">Bikers</a></li>
+        <li class=""><a ng-click="bikelist()" style="cursor: pointer;color:#ffffff">Bikes
 
-				<li ><a class="" ng-click="assignbike()" style="cursor: pointer;">Assign Bikes</a></li>
+<span style="font-size:16px;margin-right:-12px" class="pull-right hidden-xs showopacity fa fa-motorcycle"></span>
 
-        <li ng-click="logOut()"> <a href="#/"><span ng-hide="!username" ng-cloak>Logout</span> </a></li>
+        </a></li>
+				<li ><a class="" ng-click="bikerslist()" style="cursor: pointer;color:#ffffff">Bikers
+
+<span style="font-size:16px;margin-right:-12px" class="pull-right hidden-xs showopacity fa fa-user"></span>
+
+        </a></li>
+
+				<li ><a class="" ng-click="assignbike()" style="cursor: pointer;color:#ffffff">Assign Bikes
+
+<span style="font-size:16px;margin-right:-12px" class="pull-right hidden-xs showopacity "><img src="img/bike1.png" width="22" height="20"></span>
+
+        </a></li>
+
+      <li ng-click="logOut()"> <a style="cursor: pointer;color:#ffffff" href="#/">Logout<span class="fa fa-sign-out pull-right"  style="color:#ffffff;margin-right:-12px" ng-hide="!username" ng-cloak></span> </a></li>
 
      <!--    <li ><a href="#" >Logout<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li> -->
 <!-- 				<li ><a href="#"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
@@ -48,17 +60,15 @@
     <div class="">
         <div class="" style="padding-bottom:0px;">
         <div class="col-xs-12">
+
             <div class="col-xs-4" style="font-size:28px">Bike Assigned</div>
+
+                        <span class="pull-right" style=float:left> 
+
+  <button  type="submit" ng-click="newassign()" class="btn btn-primary btn-group-xs">New Assign</button>
+           </span>
             <p class="col-xs-12" style="margin-top:10px; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));"></p>
 
-
-            <span class="pull-right" style=float:left> 
-
-<!--            <span> <button style="" type="submit" ng-click="addbikers()" class="btn btn-lg btn-primary btn-block">Add Biker</button>
-           </span> -->
-
-       <button style="" type="submit" ng-click="newassign()" class="btn btn-primary btn-group-xs">New Assign</button>
-           </span>
 
 
             </div>
@@ -76,18 +86,16 @@
     <td><h5><b>Emp code</b></h5></td>
     <td><h5><b>EmpName</b></h5></td>
     <td><h5><b>Bike Assigned</b></h5></td>
-    <td><h5><b>From Date</b></h5></td>
-    <td><h5><b>To Date</b></h5></td>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="biker in assignedbikelist">
+    <tr ng-repeat="biker in assignedbikelist" ng-if="biker.bikeCode != 'null'">
        <a href="" class="">
-        <td>{{biker.Employeecode}}</td>
-        <td>{{biker.firstname}}</td>
-        <td>{{biker.bikeassigned}}</td>
-        <td>{{biker.fromdate}}</td>
-        <td>{{biker.todate}}</td>
+        <td>{{biker.employeeCode}}</td>
+        <td>{{biker.displayName}}</td>
+        <td>{{biker.bikeCode}}</td>
+<!--         <td>{{biker.fromdate}}</td>
+        <td>{{biker.todate}}</td> -->
         </a>
         <td><button type="submit" class="btn btn-xs btn-info" ng-click="assign(biker.$id)" ><span class="glyphicon glyphicon-edit"></span></button></td>
         </tr>
@@ -145,22 +153,22 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="editModalLabel">Assign Bike</h4>
+        <h4 class="modal-title" id="editModalLabel">Update Bike Assigned</h4>
       </div>
       <div class="modal-body" style="height:100px">
         <form role="form">
-          <div class="col-xs-4">
+          <div class="col-xs-4 col-md-offset-4">
                   <select class="form-control textboxmargin" ng-model="selected" ng-options="b.bikecode for b in allbikes">
                       <option value="">-- Select a Bike --</option>
                   </select>
                   </div>
 
-        <div class="col-xs-4">
-                  <input placeholder="From Date" class="form-control textboxmargin" type="text" data-ng-model="bikebiker.fromdate" onfocus="(this.type='date')"  id="date">
+<!--         <div class="col-xs-4">
+                  <input placeholder="From Date" class="form-control textboxmargin" type="text" min="today" data-ng-model="bikebiker.fromdate" onfocus="(this.type='date')"  id="date">
         </div>
         <div class="col-xs-4">
                   <input placeholder="Todate" class="form-control textboxmargin" type="text" data-ng-model="bikebiker.todate" onfocus="(this.type='date')"  id="date1">
-        </div>
+        </div> -->
 
 
 
@@ -181,14 +189,6 @@
   </div>
 </div>
 
-
-
-
-
-
-
-
-
 <div class="modal fade" id="addassignedbikeModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
   <div class="modal-dialog" style="width:750px;">
     <div class="modal-content">
@@ -199,7 +199,7 @@
       <div class="modal-body" style="height:100px">
         <form role="form">
           <div class="col-xs-3">
-                  <select class="form-control textboxmargin" ng-model="selected1" ng-options="b.Employeecode for b in bikerlist">
+                  <select class="form-control textboxmargin" ng-model="selected1" ng-options="b.employeeCode for b in bikerlist">
                       <option value="">-- Select a Biker --</option>
                   </select>
                   </div>
@@ -210,12 +210,12 @@
                       <option value="">-- Select a Bike --</option>
                   </select>
         </div>
-        <div class="col-xs-3">
+<!--         <div class="col-xs-3">
                   <input placeholder="From Date" class="form-control textboxmargin" type="text" data-ng-model="bikebiker.fromdate1" onfocus="(this.type='date')"  id="date">
         </div>
         <div class="col-xs-3">
                   <input placeholder="Todate" class="form-control textboxmargin" type="text" data-ng-model="bikebiker.todate1" onfocus="(this.type='date')"  id="date1">
-        </div>
+        </div> -->
 
 
 

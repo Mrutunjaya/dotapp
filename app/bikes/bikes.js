@@ -2,21 +2,43 @@
 
 angular.module('myApp.bike', ['ngRoute','firebase'])
 
-// .config(['$routeProvider', function($routeProvider) {
-//   $routeProvider.when('/bike', {
-//     templateUrl: 'bikes/bikelist.html',
-//     controller: 'BikeCtrl'
-//   });
-// }])
-
-//.controller('BikeCtrl', ['$scope','$firebase','$firebaseSimpleLogin','$location',function($scope,$firebase,$firebaseSimpleLogin,$location, $routeParams) {
-//.controller('HomeCtrl', function ($scope ,$firebaseSimpleLogin, $location, $routeParams, attendeeFactory, $window) {
- 
-
-
 .controller('BikeCtrl', ['$scope', '$firebase', 'CommonProp','$location','$rootScope','$routeParams', function($scope, $firebase, CommonProp,$location,$rootScope,$routeParams) {
      
       $rootScope.loggedIn = CommonProp.getUser();
+   // $scope.$apply()
+
+$scope.username = {};
+var currentUser = {};
+var myRef = new Firebase("https://dotapp.firebaseio.com");
+var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
+
+if(user == null)
+{
+  $location.path('/home');
+}
+
+  if (error) {
+    // an error occurred while attempting login
+    console.log(error);
+  } else if (user) {
+    // user authenticated with Firebase
+    currentUser = user;
+    
+  } else {
+    // user is logged out
+  }
+});
+
+ $scope.username = currentUser; 
+
+       if(!$scope.username){
+      $location.path('/home');
+}
+
+  $scope.logOut = function() {
+     $rootScope.authClient.$logout();
+
+  };
 
 
       console.log($rootScope.loggedIn);
@@ -30,7 +52,7 @@ angular.module('myApp.bike', ['ngRoute','firebase'])
         console.log('not loggedIn')
       }
 
-      $scope.username = CommonProp.getUser(); 
+     // $scope.username = CommonProp.getUser(); 
 
 //       if(!$scope.username){
 //       $location.path('/home');

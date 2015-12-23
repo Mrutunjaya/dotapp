@@ -3,10 +3,10 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
-    <title>AngularJS & Firebase Web App</title>
+    <title>Dot Web App</title>
 
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="blog.css" rel="stylesheet">
+<!--     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="blog.css" rel="stylesheet"> -->
     
   </head>
 
@@ -21,18 +21,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="" href="#"><img src="img/doticon.png"></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav">
-    <li class="active"><a ng-click="bikelist()" style="cursor: pointer;">Bikes</a></li>
-        <li ><a class="" ng-click="bikerslist()" style="cursor: pointer;">Bikers</a></li>
+    <li class=""><a ng-click="bikelist()" style="cursor: pointer;color:#ffffff">Bikes
+<span style="font-size:16px;margin-right:-12px" class="pull-right hidden-xs showopacity fa fa-motorcycle"></span>
+    </a></li>
+    <li ><a class="" ng-click="bikerslist()" style="cursor: pointer;color:#ffffff">Bikers
+<span style="font-size:16px;margin-right:-12px" class="pull-right hidden-xs showopacity fa fa-user"></span>
+    </a></li>
+    <li ><a class="" ng-click="assignbike()" style="cursor: pointer;color:#ffffff">Assign Bikes
+<span style="font-size:16px;margin-right:-12px" class="pull-right hidden-xs showopacity "><img src="img/bike1.png" width="22" height="20"></span>
+    </a></li>
 
-
-        <li ><a class="" ng-click="assignbike()" style="cursor: pointer;">Assign Bikes</a></li>
-
-        <li ng-click="logOut()"> <a href="#/"><span ng-hide="!username" ng-cloak>Logout</span> </a></li>
+      <li ng-click="logOut()"> <a style="cursor: pointer;color:#ffffff" href="#/">Logout<span class="fa fa-sign-out pull-right"  style="color:#ffffff;margin-right:-12px" ng-hide="!username" ng-cloak></span> </a></li>
 
      <!--    <li ><a href="#" >Logout<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li> -->
 <!--        <li ><a href="#"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
@@ -72,67 +76,25 @@
     <td><h5><b>Last name</b></h5></td>
     <td><h5><b>Mobile no</b></h5></td>
     <td><h5><b>Email</b></h5></td>
-    <td><h5><b>Bike Assigned</b></h5></td>
+    <!-- <td><h5><b>Bike Assigned</b></h5></td> -->
     <td><h5><b>Shift</b></h5></td>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="biker in bikerlist">
+    <tr ng-repeat="profile in profilelist">
        <a href="" class="">
-        <td>{{biker.Employeecode}}</td>
-        <td>{{biker.firstname}}</td>
-        <td>{{biker.lastname}}</td>
-        <td>{{biker.mobileno}}</td>
-        <td>{{biker.email}}</td>
-        <td>{{biker.bikeassigned}}</td>
-        <td>{{biker.shift}}</td>
+        <td>{{profile.employeeCode}}</td>
+        <td>{{profile.firstName}}</td>
+        <td>{{profile.lastName}}</td>
+        <td>{{profile.mobileNo}}</td>
+        <td>{{profile.email}}</td>
+       <!--  <td>{{profile.bikeAssigned}}</td> -->
+        <td>{{profile.shift}}</td>
         </a>
-        <td><button type="submit" class="btn btn-xs btn-info" ng-click="editbiker(biker.$id)" ><span class="glyphicon glyphicon-edit"></span></button></td>
+        <td><button type="submit" class="btn btn-xs btn-info" ng-click="editbiker(profile.$id)" ><span class="glyphicon glyphicon-edit"></span></button></td>
         </tr>
         </tbody>
         </table>
-
-        <!-- <div class="row table table-striped table-condensed dt-head-center">
-        <div class="col-xs-2"><h5>Empcode</h5></div>
-        <div class="col-xs-2"><h5>Firstname</h5></div>
-       <div class="col-xs-1"><h5>Lastname</h5></div>
-       <div class="col-xs-2"><h5>Mobileno</h5></div>
-       <div class="col-xs-2"><h5>Email</h5></div>
-       <div class="col-xs-1"><h5>Bike Assigned</h5></div>
-       <div class="col-xs-1"><h5>Shift</h5></div>                            
-
-<br/><br/><br/><br/>
-
-        <div class="row table table-striped table-condensed dt-head-center" ng-repeat="biker in bikerlist">
-        <a href="" class="">
-        <div class="col-xs-1">{{biker.Employeecode}}</div>
-        <div class="col-xs-2">{{biker.firstname}}</div>
-        <div class="col-xs-2">{{biker.lastname}}</div>
-        <div class="col-xs-2">{{biker.mobileno}}</div>
-       <!--  <div class="col-xs-1">{{article.batteryexpiry}}</div> -->
-
-       <!--  <div class="col-xs-2">{{biker.email}}</div>
-        <div class="col-xs-1">{{biker.bikeassigned}}</div>
-        <div class="col-xs-1">{{biker.shift}}</div> -->
-   <!--     <div class="col-xs-1"> <button class="btn btn-xs btn-info" ng-click="editPost(article.$id)">EDIT</button></div> -->
-       
- <!--   </a>
-   <div class="col-xs-1"><button type="submit" class="btn btn-xs btn-info" ng-click="editbiker(biker.$id)" >EDIT</button></div>
-  </div> --> 
-
-
-
-
-<!-- <div>
-        <select ng-model="selected" ng-options="b.Employeecode for b in bikerlist">
-            <option value="">-- Select a Book --</option>
-        </select>
-
-        <p>Selected Book: <b>{{ selected }}</b></p>
-
-</div> -->
-
-
 
         </div>
        
